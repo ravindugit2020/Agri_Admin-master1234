@@ -1,0 +1,88 @@
+<div class="alert-body">
+  <div class="alert-header mat-elevation-z1">
+    <div></div>
+    <div class="alert-header-title ">
+      <span>Update Farmer</span>
+    </div>
+    <div></div>
+  </div>
+
+  <form #form (ngSubmit)="saveFarmers()" [formGroup]="FarmerUserFrom" class="form-container">
+    <div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label >Farmer Id</mat-label>
+          <input  matInput formControlName="farmer_id" placeholder="farmer_id" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label >Farmer Name</mat-label>
+          <input  matInput formControlName="farmer_name" placeholder="farmer_name" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Farmer Password</mat-label>
+          <input  matInput formControlName="farmer_password" placeholder="farmer_password" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Farmer Contact</mat-label>
+          <input formControlName="farmer_contact" matInput placeholder="farmer_contact" minlength="3">
+        </mat-form-field>
+
+
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Farmer Image</mat-label>
+          <input formControlName="farmer_image" matInput placeholder="farmer_image" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mt-form-field">
+          <mat-label>Fertilizer</mat-label>
+          <input type="text"
+                 placeholder="Product Price"
+                 aria-label="Product Price"
+                 matInput
+                 formControlName="fertilizer"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+
+      </div>
+
+      <div class="form-row">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <input  matInput formControlName="status" placeholder="status" minlength="1">
+      </mat-form-field>
+
+      </div>
+
+    </div>
+    <div class="form-row-btn">
+      <div class="row-btn">
+        <button id="cancelbtn" (click)="onNoClick()" mat-raised-button type="reset">Cancel</button>
+        <button  id="savebtn"  mat-raised-button type="submit" >Update</button>
+        <button *ngIf="apiResponse" [class.btn-spinner]="apiResponse" id="spinner" mat-raised-button></button>
+      </div>
+    </div>
+  </form>
+
+</div>

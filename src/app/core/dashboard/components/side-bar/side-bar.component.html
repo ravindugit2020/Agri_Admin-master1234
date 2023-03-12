@@ -1,0 +1,32 @@
+<mat-sidenav-container #sidenavContainer class="shadow-none" style="height: 630px;">
+  <mat-sidenav [opened]="navState" class="bg-skin-secondary shadow-2xl" mode="side">
+    <mat-nav-list >
+      <mat-list-item  role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./farmers'">
+        <fa-icon [icon]="faTractor" class="side-btn-icon "></fa-icon>&nbsp;Manage Farmers
+      </mat-list-item>
+      <mat-list-item role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./experts'">
+        <fa-icon [icon]="faUserTie" class="side-btn-icon "></fa-icon>&nbsp;Manage Experts
+      </mat-list-item>
+      <mat-list-item role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./products'">
+        <fa-icon [icon]="faCarrot" class="side-btn-icon "></fa-icon>&nbsp;Manage Products
+      </mat-list-item>
+      <mat-list-item role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./problems'">
+        <fa-icon [icon]="faSeedling" class="side-btn-icon "></fa-icon>&nbsp;Manage Problems
+      </mat-list-item>
+      <mat-list-item role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./chats'">
+        <fa-icon [icon]="faFacebookMessenger" class="side-btn-icon "></fa-icon>&nbsp;Chats
+      </mat-list-item>
+      <mat-list-item role="listitem"  routerLinkActive="buttonActive" [routerLink]="'./statics'">
+        <fa-icon [icon]="faChartBar" class="side-btn-icon "></fa-icon>&nbsp;Statics
+      </mat-list-item>
+
+    </mat-nav-list>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+

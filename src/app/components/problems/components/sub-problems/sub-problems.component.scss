@@ -1,0 +1,107 @@
+.cover-one{
+  background: #165D40;
+  font-size: 26.88px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.cmnt-input{
+  width: 80%;
+}
+
+.btn-add{
+  color: white;
+  background: #08903D;
+  border-color: #08903D;
+}
+
+.btn-add2{
+  color: white;
+  background: #165D40;
+  border-color: #165D40;
+}
+
+.cmt-wrapper{
+  background: #D7D7D7;
+  border-radius: 18px;
+}
+
+.btn-login:hover{
+  background: #D32427;
+  color: white;
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #08903D!important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #08903D!important;
+  // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #08903D!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+  color: #08903D!important;
+  opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: #08903D!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+  caret-color: #08903D!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+  color: #08903D!important;
+  // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #08903D!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #08903D!important;
+}
+
+.mt-form-field{
+  width: 350px;
+}
+
+.mt-desc-field{
+  width: 700px;
+}
+
+.btn-add2{
+  background: #08903D;
+  border-color: #08903D;
+  color: white;
+}
+
+.btn-reset{
+  background: #ff3b3b;
+  border-color: #ff3b3b;
+  color: white;
+}
+.txt-sub-head-2{
+  font-size: 2.8rem;
+}
+
+.add-comment{
+  margin-left: 46px;
+}

@@ -1,0 +1,45 @@
+<mat-toolbar class="shadow w-full bg-skin-primary text-skin-light  justify-between overflow-hidden">
+  <div class="flex w-1/5 h-full justify-start items-center">
+    <div class="flex items-center w-full h-full">
+      <div class="items-center flex h-full mr-4">
+        <!--    <img class="max-w-xs max-h-8" src="../../../../../../../../assets/img/iconfinder_Google_1298745.png" alt="client intelleon" >-->
+      </div>
+      <div >
+        <h4 class="text-skin-light" style="color: white">Agri Admin</h4>
+      </div>
+    </div>
+
+    <button mat-button class="menu-button" (click)="sendNavState()" disableRipple>
+      <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+  <div class="justify-center">
+  </div>
+  <div class="flex h-full items-center justify-end">
+    <div class="user">
+
+    </div>
+    <div  class="w-12 items-center justify-center">
+    </div>
+
+    <div class="items-center">
+      <div id="wrap" [matMenuTriggerFor]="menu" >
+        <div id="pic" >
+          <!--          <img src="../../../../../../../../assets/img/photo_2021-03-21_00-30-35.jpg" alt="Profile">-->
+        </div>
+        <div id="name" >
+          <h6 style="color: white" >User:</h6>
+        </div>
+      </div>
+
+      <mat-menu #menu="matMenu" >
+        <div mat-menu-item>
+          <button mat-icon-button aria-label="Logout" (click)="logout()"  style="margin-left: 5px">
+            <mat-icon style="margin-right: 15px">logout</mat-icon>
+            logout
+          </button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

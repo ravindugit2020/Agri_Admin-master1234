@@ -1,0 +1,91 @@
+<div class="alert-body">
+  <div class="alert-header mat-elevation-z1">
+    <div></div>
+    <div class="alert-header-title ">
+      <span>Add New Expert</span>
+    </div>
+    <div></div>
+  </div>
+
+  <form #form (ngSubmit)="saveItemss()" [formGroup]="PoliceUserFrom" class="form-container">
+    <div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label >Expert Id</mat-label>
+          <input  matInput formControlName="expert_id" placeholder="expert_id" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label >Expert Name</mat-label>
+          <input  matInput formControlName="expert_name" placeholder="expert_name" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input  matInput formControlName="expert_password" placeholder="expert_password" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Title</mat-label>
+          <input formControlName="expert_title" matInput placeholder="expert_title" minlength="3">
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Desc</mat-label>
+          <input formControlName="expert_desc" matInput placeholder="expert_desc" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Contact</mat-label>
+          <input  matInput formControlName="expert_contact" placeholder="expert_contact" minlength="1">
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Mail</mat-label>
+          <input  matInput formControlName="expert_mail" placeholder="expert_mail" minlength="1">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Img</mat-label>
+          <input  matInput formControlName="expert_img" placeholder="expert_img" minlength="3">
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <input  matInput formControlName="status" placeholder="status" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+    <div class="form-row-btn">
+      <div class="row-btn">
+        <button id="cancelbtn" (click)="onNoClick()" mat-raised-button type="reset">Cancel</button>
+        <button  id="savebtn"  mat-raised-button type="submit" >Update</button>
+        <button *ngIf="apiResponse" [class.btn-spinner]="apiResponse" id="spinner" mat-raised-button></button>
+      </div>
+    </div>
+  </form>
+
+</div>

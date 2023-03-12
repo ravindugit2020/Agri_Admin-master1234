@@ -1,0 +1,32 @@
+::ng-deep nb-layout-column {
+  width: 100%;
+}
+
+.bolder-text {
+  font-weight: bold;
+}
+
+nb-card{
+  border-color: #08903D;
+}
+
+::ng-deep .nb-theme-default nb-chat.status-success .header {
+  background-color: #08903D;
+  color: #fff;
+}
+
+::ng-deep .nb-theme-default [nbButton].appearance-filled.status-success, .nb-theme-default .appearance-filled.status-success[nbButtonToggle] {
+  background-color: #08903D;
+  border-color: #08903D;
+  color: #fff;
+}
+
+::ng-deep .nb-theme-default [nbButton].appearance-filled.status-primary, .nb-theme-default .appearance-filled.status-primary[nbButtonToggle] {
+  background-color:#08903D;
+  border-color:#08903D;
+}
+
+::ng-deep .nb-theme-default [nbButton].appearance-filled.status-primary:hover, .nb-theme-default .appearance-filled.status-primary[nbButtonToggle]:hover {
+  background-color:#00d68f;
+  border-color:#00d68f;
+}

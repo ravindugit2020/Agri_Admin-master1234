@@ -1,0 +1,179 @@
+<div class="alert-body">
+  <div class="alert-header mat-elevation-z1">
+    <div></div>
+    <div class="alert-header-title ">
+      <span>Add New Product</span>
+    </div>
+    <div></div>
+  </div>
+
+  <form #form (ngSubmit)="saveProducts()" [formGroup]="ProductUserFrom" class="form-container">
+    <div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label >Farmer Name</mat-label>
+          <input  matInput formControlName="farmer_name" placeholder="farmer_name" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Farmer Contact</mat-label>
+          <input  matInput formControlName="farmer_contact" placeholder="farmer_contact" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Name</mat-label>
+          <input formControlName="product_title" matInput placeholder="product_title" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Desc</mat-label>
+          <input formControlName="product_desc" matInput placeholder="product_desc" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Img</mat-label>
+          <input  matInput formControlName="product_img" placeholder="product_img" minlength="1">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Price</mat-label>
+          <input  matInput formControlName="product_price" placeholder="product_price" minlength="1">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline" class="mt-form-field">
+          <mat-label>Fertilizer</mat-label>
+          <input type="text"
+                 placeholder="Product Price"
+                 aria-label="Product Price"
+                 matInput
+                 formControlName="fertilizer"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <input  matInput formControlName="status" placeholder="status" minlength="1">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+    <div class="form-row-btn">
+      <div class="row-btn">
+        <button id="cancelbtn" (click)="onNoClick()" mat-raised-button type="reset">Reset</button>
+        <button  id="savebtn"  mat-raised-button type="submit" >Save</button>
+        <button *ngIf="apiResponse" [class.btn-spinner]="apiResponse" id="spinner" mat-raised-button></button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!--==================================================================================================-->
+<div class="alert-header mat-elevation-z1">
+  <div></div>
+  <div class="alert-header-title ">
+    <span>Manage Products</span>
+  </div>
+  <div></div>
+</div>
+
+
+<div class="form-main-bg" (keyup)="Test($event)">
+  <div class="form-body ">
+    <div  class="form-header">
+      <div class="form-header-content">
+        <div class="form-header-title" >
+          All Products
+        </div>
+      </div>
+    </div>
+    <div>
+
+      <table class="form-table" mat-table [dataSource]="dataSource" >
+        <!-- Action Column -->
+        <ng-container matColumnDef="product_id" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Product ID</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.product_id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="product_title" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Product Name</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.product_title}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="product_desc">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Product desc</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.product_desc}}</td>
+        </ng-container>
+        <ng-container matColumnDef="product_img">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Product Img</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.product_img}}</td>
+        </ng-container>
+        <ng-container matColumnDef="product_price">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Product Price</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.product_price}}</td>
+        </ng-container>
+        <ng-container matColumnDef="fertilizer">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Fertilizer</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.fertilizer}}</td>
+        </ng-container>
+        <ng-container matColumnDef="farmer_name">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Farmer Name</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.farmer_name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="farmer_contact">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Farmer Contact</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.farmer_contact}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Status</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center" style="width: 180px"> Action</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">
+            <div   class="w-auto pr-4 flex justify-start">
+              <button class="btn-rounded btn-primary" (click)="updateProduct(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              &nbsp;
+              &nbsp;
+              <button class="btn-rounded btn-danger" (click)="deleteProduct(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr id="table" mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="row.status==='INACTIVATED' ? 'form-table-column-INACTIVATED' : ''"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching""</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

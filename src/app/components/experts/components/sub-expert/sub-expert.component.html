@@ -1,0 +1,179 @@
+<div class="alert-body">
+  <div class="alert-header mat-elevation-z1">
+    <div></div>
+    <div class="alert-header-title ">
+      <span>Add New Expert</span>
+    </div>
+    <div></div>
+  </div>
+
+  <form #form (ngSubmit)="saveItemss()" [formGroup]="PoliceUserFrom" class="form-container">
+    <div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label >Expert Name</mat-label>
+          <input  matInput formControlName="expert_name" placeholder="expert_name" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input  matInput formControlName="expert_password" placeholder="expert_password" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Title</mat-label>
+          <input formControlName="expert_title" matInput placeholder="expert_title" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Desc</mat-label>
+          <input formControlName="expert_desc" matInput placeholder="expert_desc" minlength="3">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Contact</mat-label>
+          <input  matInput formControlName="expert_contact" placeholder="expert_contact" minlength="1">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Mail</mat-label>
+          <input  matInput formControlName="expert_mail" placeholder="expert_mail" minlength="1">
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expert Img</mat-label>
+          <input  matInput formControlName="expert_img" placeholder="expert_img" minlength="3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <input  matInput formControlName="status" placeholder="status" minlength="3">
+        </mat-form-field>
+
+
+
+      </div>
+
+    </div>
+    <div class="form-row-btn">
+      <div class="row-btn">
+        <button id="cancelbtn" (click)="onNoClick()" mat-raised-button type="reset">Reset</button>
+        <button  id="savebtn"  mat-raised-button type="submit" >Save</button>
+        <button *ngIf="apiResponse" [class.btn-spinner]="apiResponse" id="spinner" mat-raised-button></button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!--==================================================================================================-->
+<div class="alert-header mat-elevation-z1">
+  <div></div>
+  <div class="alert-header-title ">
+    <span>Manage Expert</span>
+  </div>
+  <div></div>
+</div>
+
+
+<div class="form-main-bg" (keyup)="Test($event)">
+  <div class="form-body ">
+    <div  class="form-header">
+      <div class="form-header-content">
+        <div class="form-header-title" >
+          All Experts
+        </div>
+      </div>
+    </div>
+    <div>
+
+      <table class="form-table" mat-table [dataSource]="dataSource" >
+        <!-- Action Column -->
+        <ng-container matColumnDef="expert_id" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert ID</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_name" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Name</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_name}}</td>
+        </ng-container>
+
+<!--        <ng-container matColumnDef="imageURL">-->
+<!--          <th mat-header-cell *matHeaderCellDef class="form-table-header">Image URL</th>-->
+<!--          <td mat-cell *matCellDef="let row" class="form-table-column mt-3 mb-3">-->
+
+<!--            <img [src]='"https://iphenlk.com/wp-content/uploads/iims_webapp_images/"+row?.imageURL' style="width: 150px; height: 150px; object-fit: cover" class="mt-3 mb-3" alt="img"/>-->
+<!--          </td>-->
+<!--        </ng-container>-->
+
+        <ng-container matColumnDef="expert_password">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Password</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_password}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_title">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Title</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_desc">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Desc</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_desc}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_contact">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Contact</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_contact}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_mail">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Mail</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_mail}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expert_img">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Expert Img</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.expert_img}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center">Status</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">{{row.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action" >
+          <th mat-header-cell *matHeaderCellDef class="form-table-header text-center" style="width: 180px"> Action</th>
+          <td mat-cell *matCellDef="let row" class="form-table-column text-center">
+            <div   class="w-auto pr-4 flex justify-start ">
+              <button class="btn-rounded btn-primary" (click)="updateExpert(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              &nbsp;
+              &nbsp;
+              <button class="btn-rounded btn-danger" (click)="deleteExpert(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr id="table" mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="row.status==='INACTIVATED' ? 'form-table-column-INACTIVATED' : ''"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching""</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
